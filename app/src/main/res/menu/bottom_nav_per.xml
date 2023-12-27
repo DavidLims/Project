@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:title="Beranda"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:title="Cari"
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search" />
+
+    <item
+        android:title="Tambah"
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add" />
+
+    <item
+        android:title="Profil"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"/>
+
+</menu>
