@@ -219,7 +219,8 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:layout_gravity="center"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        app:cornerRadius="7dp"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

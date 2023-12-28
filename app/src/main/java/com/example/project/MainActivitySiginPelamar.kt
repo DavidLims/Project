@@ -101,8 +101,8 @@ class MainActivitySiginPelamar : AppCompatActivity() {
 //        startActivity(intent)
 //    }
 //
-//    private fun navigateToMain() {
-//        val intent = Intent(this, MainActivityBerandaPelamar::class.java)
+//    private fun navigateToMain() {z
+ //   val intent = Intent(this, MainActivityBerandaPelamar::class.java)
 //        startActivity(intent)
 //        finish()
 //    }

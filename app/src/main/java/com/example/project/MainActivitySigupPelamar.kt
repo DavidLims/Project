@@ -73,7 +73,7 @@ class MainActivitySigupPelamar : AppCompatActivity() {
             startActivity(i)
         }
 
-        //ketika button 'Masuk' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
+        //ketika button 'Daftr' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
         fun btn_masuk_login_pel(view: View) {
             val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
             startActivity(i)
