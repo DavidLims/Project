@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="30dp"
-    tools:context=".MainActivityTambahLowongan">
+    tools:context=".ActivityAddLow">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,23 +27,25 @@
         </TextView>
 
         <ImageView
+            android:id="@+id/uploadImage"
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:src="@drawable/ic_upload"
-            android:id="@+id/uploadImage"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/hijau"
             android:layout_gravity="center_horizontal">
         </ImageView>
 
-        <TextView
+        <Button
+            android:id="@+id/pilihFotoID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pilih Foto"
             android:textSize="15sp"
             android:textColor="@color/orange"
-            android:layout_gravity="center_horizontal">
-        </TextView>
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/white">
+        </Button>
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,9 +58,9 @@
         </TextView>
 
         <EditText
+            android:id="@+id/uploadPosisi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/uploadPosisi"
             android:background="@drawable/border_beranda"
             android:layout_marginTop="10dp"
             android:padding="16dp"
@@ -79,13 +81,36 @@
         </TextView>
 
         <EditText
+            android:id="@+id/uploadDurasi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/uploadDurasi"
             android:background="@drawable/border_beranda"
             android:layout_marginTop="10dp"
             android:padding="16dp"
             android:hint="Masukkan Durasi Lowongan Kerja"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:textSize="15sp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status Lowongan"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="inherit"
+            android:textColor="@color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/uploadStatusLow"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/border_beranda"
+            android:layout_marginTop="10dp"
+            android:padding="16dp"
+            android:hint="Masukkan Status Lowongan"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
             android:textSize="15sp">
@@ -102,9 +127,9 @@
         </TextView>
 
         <EditText
+            android:id="@+id/uploadSyarat"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:id="@+id/uploadSyarat"
             android:background="@drawable/border_beranda"
             android:layout_marginTop="10dp"
             android:padding="16dp"
@@ -114,11 +139,82 @@
             android:textSize="15sp">
         </EditText>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Syarat dan Ketentuan Lowongan"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="inherit"
+            android:textColor="@color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/uploadPenjelasanLowongan"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/border_beranda"
+            android:layout_marginTop="10dp"
+            android:padding="16dp"
+            android:hint="Masukkan Penjelasan Detail Lowongan"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:textSize="15sp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Instansi"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="inherit"
+            android:textColor="@color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/uploadNamaInstansi"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/border_beranda"
+            android:layout_marginTop="10dp"
+            android:padding="16dp"
+            android:hint="Masukkan Nama Instansi"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:textSize="15sp">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah Lowongan"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="inherit"
+            android:textColor="@color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/uploadJumlahLow"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/border_beranda"
+            android:layout_marginTop="10dp"
+            android:padding="16dp"
+            android:hint="Masukkan Jumlah Penerimaan"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:textSize="15sp">
+        </EditText>
+
         <Button
+            android:id="@+id/tambahButton"
+            android:onClick="tambahButtonClick"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:text="Tambah"
-            android:id="@+id/tambahButton"
             android:textSize="18sp"
             android:layout_marginTop="20dp"
             app:cornerRadius="10dp"

@@ -4,12 +4,9 @@ import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.get
-import androidx.viewpager2.widget.ViewPager2
 import com.example.project.databinding.ActivitySigupPelamarBinding
-import com.example.project.userPelamar
+import com.example.project.table.userPelamar
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -29,17 +26,17 @@ class MainActivitySigupPelamar : AppCompatActivity() {
 
         ref = FirebaseDatabase.getInstance().getReference("userPelamar")
         binding.btnregispel.setOnClickListener {
-            val userId = ref.push().key
-            val email = binding.inputEmailPelamar.text.toString()
-            val username = binding.inputNamaPelamar.text.toString()
-            val password = binding.inputPassPelamar.text.toString()
-            val konfirmasiPass = binding.inputKonfPassPelamar.text.toString()
-            val noHp = binding.inputHpPelamar.toString()
-            val userpelamar = userPelamar(userId!!, email, username, password, noHp)
+            val userIdPel = ref.push().key
+            val emailPel = binding.inputEmailPelamar.text.toString()
+            val usernamePel = binding.inputNamaPelamar.text.toString()
+            val passwordPel = binding.inputPassPelamar.text.toString()
+            val konfirmasiPassPel = binding.inputKonfPassPelamar.text.toString()
+            val noHpPel = binding.inputHpPelamar.text.toString()
+            val userpelamar = userPelamar(userIdPel!!, emailPel, usernamePel, passwordPel, noHpPel)
 
-            if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty() && konfirmasiPass.isNotEmpty() && noHp.isNotEmpty()) {
-                if (password == konfirmasiPass) {
-                    ref.child(userId).setValue(userpelamar).addOnCompleteListener {
+            if (emailPel.isNotEmpty() && usernamePel.isNotEmpty() && passwordPel.isNotEmpty() && konfirmasiPassPel.isNotEmpty() && noHpPel.isNotEmpty()) {
+                if (passwordPel == konfirmasiPassPel) {
+                    ref.child(userIdPel).setValue(userpelamar).addOnCompleteListener {
                         Toast.makeText(
                             applicationContext,
                             "Registrasi berhasil",
@@ -61,22 +58,22 @@ class MainActivitySigupPelamar : AppCompatActivity() {
 
 
 
-        //ketika text 'Masuk' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
-        fun btn_masuk_lagi_pel(view: View) {
-            val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
-            startActivity(i)
-        }
-
-        //ketika text 'Kembali' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
-        fun btn_kembali_signin_pel(view: View) {
-            val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
-            startActivity(i)
-        }
-
-        //ketika button 'Daftr' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
-        fun btn_masuk_login_pel(view: View) {
-            val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
-            startActivity(i)
-        }
-
+    //ketika text 'Masuk' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
+    fun btn_masuk_lagi_pel(view: View) {
+        val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
+        startActivity(i)
     }
+
+    //ketika text 'Kembali' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
+    fun btn_kembali_signin_pel(view: View) {
+        val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
+        startActivity(i)
+    }
+
+    //ketika button 'Masuk' di halaman sign up pelamar di klik, akan ngarah ke halaman sign in pelamar
+    fun btn_masuk_login_pel(view: View) {
+        val i = Intent(applicationContext, MainActivitySiginPelamar::class.java)
+        startActivity(i)
+    }
+
+}

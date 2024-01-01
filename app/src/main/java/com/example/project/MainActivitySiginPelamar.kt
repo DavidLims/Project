@@ -1,88 +1,89 @@
 package com.example.project
 
 import android.content.Intent
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project.databinding.ActivitySiginPelamarBinding
-import com.example.project.SessionManager
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivitySiginPelamar : AppCompatActivity() {
 
-//    private lateinit var binding: ActivitySiginPelamarBinding galih
-//    private lateinit var ref: DatabaseReference galih
-    //private lateinit var sessionManager: SessionManager galih
+    private lateinit var binding: ActivitySiginPelamarBinding
+    private lateinit var ref: DatabaseReference
+    private lateinit var sessionManagerPel: SessionManagerPel
 
     //menampilkan layout sign in pelamar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivitySiginPelamarBinding.inflate(layoutInflater) galih
-        setContentView(R.layout.activity_sigin_pelamar)
-        //setContentView(binding.root) galih
-        val extras = intent.extras
+        binding = ActivitySiginPelamarBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_sigin_pelamar)
+        setContentView(binding.root)
+//        val extras = intent.extras
 
-//        ref = FirebaseDatabase.getInstance().getReference("user") galih
-     //   sessionManager = SessionManager(this) galih
+        ref = FirebaseDatabase.getInstance().getReference("userPelamar")
+        sessionManagerPel = SessionManagerPel(this)
 
-//        binding.btnSiginPelId.setOnClickListener { galih
-//            val email = binding.emailPel.text.toString()
-//            val password = binding.passPel.text.toString()
-//            if (email.isNotEmpty() && password.isNotEmpty()) {
-//                loginUser(email, password)
-//            } else {
-//                Toast.makeText(this, "Field tidak boleh kosong", Toast.LENGTH_SHORT).show()
-//            }
-//            binding.TextViewToRegisPel.setOnClickListener {
-//                navigateToRegister()
-//            }
-//        } galih
+        binding.btnSiginPelId.setOnClickListener {
+            val emailPel = binding.emailPel.text.toString()
+            val passwordPel = binding.passPel.text.toString()
+
+            if (emailPel.isNotEmpty() && passwordPel.isNotEmpty()) {
+                loginUser(emailPel, passwordPel)
+            } else {
+                Toast.makeText(this, "Field tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.TextViewToRegisPel.setOnClickListener {
+            navigateToRegister()
+        }
     }
 
-//    private fun loginUser(email: String, password: String) { galih
-//        val query = ref.orderByChild("email").equalTo(email)
-//
-//        query.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//                    for (userSnapshot in dataSnapshot.children) {
-//                        val storedPassword = userSnapshot.child("password").value.toString()
-//                        if (password == storedPassword) {
-//                            // Password sesuai, login berhasil
-//                            val userId = userSnapshot.key
-//                            val username = userSnapshot.child("username").value.toString()
-//                            //sessionManager.saveUserSession(userId!!, email, username)
-//                            navigateToMain()
-//                        } else {
-//                            showToast("Password salah")
-//                        }
-//                    }
-//                } else {
-//                    showToast("Pengguna dengan email $email tidak ditemukan")
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Implementation for onCancelled method
-//            }
-//        })
-//    } galih
+    private fun loginUser(emailPel: String, passwordPel: String) {
+        val query = ref.orderByChild("emailPel").equalTo(emailPel)
 
-
-
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        val storedPassword = userSnapshot.child("passwordPel").value.toString()
+                        if (passwordPel == storedPassword) {
+                            // Password sesuai, login berhasil
+                            val userIdPel = userSnapshot.key
+                            val usernamePel = userSnapshot.child("usernamePel").value.toString()
+                            sessionManagerPel.saveUserSessionPel(userIdPel!!, emailPel, usernamePel)
+                            navigateToMain()
+                        } else {
+                            showToast("Password salah")
+                        }
+                    }
+                } else {
+                    showToast("Pengguna dengan email $emailPel tidak ditemukan")
+                }
+            }
+            //
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Implementation for onCancelled method
+            }
+        })
+    }
 
     //ketika button 'masuk' di halaman sign in pelamar di klik, akan ngarah ke halaman beranda pelamar
-    fun btn_masuk_pel(view: View) {
-        val i = Intent(applicationContext, MainActivityBerandaPelamar::class.java)
-        startActivity(i)
-    }
-
-    //ketika text 'Daftar' di halaman sign in pelamar di klik, akan ngarah ke halaman sign up pelamar
-    fun btn_regis_pel(view: View) {
-        val i = Intent(applicationContext, MainActivitySigupPelamar::class.java)
-        startActivity(i)
-    }
+//    fun btn_masuk_pel(view: View) {
+//        val i = Intent(applicationContext, MainActivityBerandaPelamar::class.java)
+//        startActivity(i)
+//    }
+//
+//    //ketika text 'Daftar' di halaman sign in pelamar di klik, akan ngarah ke halaman sign up pelamar
+//    fun btn_regis_pel(view: View) {
+//        val i = Intent(applicationContext, MainActivitySigupPelamar::class.java)
+//        startActivity(i)
+//    } btnSiginPelId
 
 //
 //    fun btn_regis_pel(view: View) {
@@ -96,19 +97,19 @@ class MainActivitySiginPelamar : AppCompatActivity() {
         startActivity(i)
     }
 
-//    private fun navigateToRegister() { galih
-//        val intent = Intent(this, MainActivitySigupPelamar::class.java)
-//        startActivity(intent)
-//    }
-//
-//    private fun navigateToMain() {z
- //   val intent = Intent(this, MainActivityBerandaPelamar::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
-//
-//    private fun showToast(message: String) {
-//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-//    } galih
-    
+    private fun navigateToRegister() {
+        val intent = Intent(this, MainActivitySigupPelamar::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToMain() {
+        val intent = Intent(this, MainActivityBerandaPelamar::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
 }

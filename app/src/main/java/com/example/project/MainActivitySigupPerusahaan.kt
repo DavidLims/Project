@@ -4,11 +4,9 @@ import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
-import androidx.viewpager2.widget.ViewPager2
 import com.example.project.databinding.ActivitySigupPerusahaanBinding
-import com.example.project.userPelamar
+import com.example.project.table.userPerusahaan
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -27,16 +25,16 @@ class MainActivitySigupPerusahaan : AppCompatActivity() {
 
         ref = FirebaseDatabase.getInstance().getReference("userPerusahaan")
         binding.btnregisper.setOnClickListener {
-            val userId = ref.push().key
-            val username = binding.inputNamaPerusahaan.text.toString()
-            val email = binding.inputEmailPerusahaan.text.toString()
-            val password = binding.inputPassPerusahaan.text.toString()
-            val konfirmasiPass = binding.inputKonfPassPerusahaan.text.toString()
-            val userperusahaan = userPerusahaan(userId!!, username, email, password)
+            val userIdPer = ref.push().key
+            val usernamePer = binding.inputNamaPerusahaan.text.toString()
+            val emailPer = binding.inputEmailPerusahaan.text.toString()
+            val passwordPer = binding.inputPassPerusahaan.text.toString()
+            val konfirmasiPassPer = binding.inputKonfPassPerusahaan.text.toString()
+            val userperusahaan = userPerusahaan(userIdPer!!, usernamePer, emailPer, passwordPer)
 
-            if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && konfirmasiPass.isNotEmpty()) {
-                if (password == konfirmasiPass) {
-                    ref.child(userId).setValue(userperusahaan).addOnCompleteListener {
+            if (usernamePer.isNotEmpty() && emailPer.isNotEmpty() && passwordPer.isNotEmpty() && konfirmasiPassPer.isNotEmpty()) {
+                if (passwordPer == konfirmasiPassPer) {
+                    ref.child(userIdPer).setValue(userperusahaan).addOnCompleteListener {
                         Toast.makeText(
                             applicationContext,
                             "Registrasi berhasil",

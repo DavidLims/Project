@@ -24,9 +24,5 @@ class MainActivityBerandaPerusahaan : AppCompatActivity() {
         val i = Intent(applicationContext, MainActivityBerandaPerusahaan::class.java)
         startActivity(i)
     }
-
-    fun btn_lihat_detail_1(view: View) {
-        val i = Intent(applicationContext, MainActivityTambah::class.java)
-        startActivity(i)
-    }
 }
+

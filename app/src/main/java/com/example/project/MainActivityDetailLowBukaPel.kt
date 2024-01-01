@@ -23,7 +23,7 @@ class MainActivityDetailLowBukaPel : AppCompatActivity() {
     }
 
     fun btn_lamar_kerja(view: View) {
-        val i = Intent(applicationContext, MainActivityProfilPelamar::class.java)
+        val i = Intent(applicationContext, ActivityAddLow::class.java)
         startActivity(i)
     }
 

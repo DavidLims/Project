@@ -18,9 +18,9 @@ class MainActivityStatusSeleksiPelamar : AppCompatActivity() {
 
     }
 
-    fun btn_kembali_profil_pel(view: View) {
-        val i = Intent(applicationContext, MainActivityProfilPelamar::class.java)
-        startActivity(i)
-    }
+//    fun btn_kembali_profil_pel(view: View) {
+//        val i = Intent(applicationContext, MainActivityProfilPelamar::class.java)
+//        startActivity(i)
+//    }
 
 }

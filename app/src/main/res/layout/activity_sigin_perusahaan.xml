@@ -21,9 +21,9 @@
 
     <ImageView
         android:id="@+id/logoscc"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo_scc"/>
+        android:src="@drawable/logosccpcr"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -65,6 +65,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailPer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Masukkan email"
@@ -79,6 +80,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passPer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Masukkan kata sandi"
@@ -87,7 +89,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_sigin_per_id"
+        android:id="@+id/btnSiginPerId"
         android:onClick="btn_masuk_per"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -98,8 +100,8 @@
         android:gravity="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:layout_marginTop="30dp"
-        app:cornerRadius="7dp"/>
+        app:cornerRadius="7dp"
+        android:layout_marginTop="30dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,6 +119,7 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/TextViewToRegisPer"
             android:clickable="true"
             android:onClick="btn_regis_per"
             android:layout_width="wrap_content"

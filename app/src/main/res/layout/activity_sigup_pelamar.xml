@@ -21,9 +21,9 @@
 
     <ImageView
         android:id="@+id/logoscc"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo_scc"/>
+        android:src="@drawable/logosccpcr"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -96,18 +96,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputHpPelamar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="2dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputHpPelamar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Nomor Telepon"
             android:textSize="15dp"
-            android:inputType="phone|text"/>
+            android:inputType="textPhonetic"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -122,8 +122,8 @@
         android:backgroundTint="@color/blue"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:layout_marginTop="5dp"
-        app:cornerRadius="7dp"/>
+        app:cornerRadius="7dp"
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
