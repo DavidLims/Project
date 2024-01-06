@@ -134,22 +134,22 @@
                         android:id="@+id/btn_lihat_detail_id"
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
-                        android:text="Lihat Pelamar"
-                        android:textSize="12dp"
                         android:layout_marginLeft="10dp"
-                        android:backgroundTint="@color/orange"
-                        android:textAllCaps="false"
-                        android:onClick="btn_lihat_detail_1"
                         android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/orange"
+                        android:onClick="btnLihatDetailKlik"
+                        android:text="Lihat Pelamar"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
-                        app:cornerRadius="7dp">
-                    </Button>
+                        android:textSize="12dp"
+                        app:cornerRadius="7dp"></Button>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewPerBeranda"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -164,7 +164,10 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/abu"/>
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,42 +4,39 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.project.databinding.ActivityBerandaPerusahaanBinding
+import com.example.project.databinding.ActivityProfilPelamarBinding
 
-class MainActivityBerandaPerusahaan : AppCompatActivity() {
+class ProfilPelamarActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBerandaPerusahaanBinding
-
-    //menampilkan layout beranda perusahaan
+    private lateinit var binding: ActivityProfilPelamarBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBerandaPerusahaanBinding.inflate(layoutInflater)
+        binding = ActivityProfilPelamarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationViewPerBeranda.setOnNavigationItemSelectedListener { menuItem ->
+        binding.bottomNavigationViewPelProfil.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home ->
                 {
 //                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     // Ganti dengan Intent untuk Activity yang Anda inginkan
-                    val intent = Intent(this, MainActivityBerandaPerusahaan::class.java)
+                    val intent = Intent(this, MainActivityBerandaPelamar::class.java)
                     startActivity(intent)
                 }
 //                    replaceFragment(HomeFragment())
-                R.id.add ->
+                R.id.tentang ->
                     //replaceFragment(AddFragment())
                 {
 //                    replaceFragment(TentangPelamarFragment())
 //                     Ganti dengan Intent untuk Activity yang Anda inginkan
-                    val intent = Intent(this, ActivityAddLow::class.java)
+                    val intent = Intent(this, TentangPelamarActivity::class.java)
                     startActivity(intent)
 //                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }
-
                 R.id.profile ->
                 {
 //                    replaceFragment(ProfilPelamarFragment())
-                    val intent = Intent(this, ProfilPerusahaanActivity::class.java)
+                    val intent = Intent(this, ProfilPelamarActivity::class.java)
                     startActivity(intent)
 //                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 
@@ -50,17 +47,10 @@ class MainActivityBerandaPerusahaan : AppCompatActivity() {
             true
         }
 
-
     }
-
-    //ketika button 'masuk sebagai perusahaan' di homepage di klik, akan ngarah ke halaman beranda perusahaan
-    fun btn_masuk_per(view: View) {
-        val i = Intent(applicationContext, MainActivityBerandaPerusahaan::class.java)
-        startActivity(i)
-    }
-
-    fun btnLihatDetailKlik(view: View){
-        val i = Intent(applicationContext, ActivityAddLow::class.java)
+    //
+    fun textViewKeluar(view: View) {
+        val i = Intent(applicationContext, MainActivityHomepage::class.java)
         startActivity(i)
     }
 

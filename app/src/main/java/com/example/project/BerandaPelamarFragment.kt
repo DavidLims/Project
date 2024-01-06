@@ -33,12 +33,14 @@ class BerandaPelamarFragment : Fragment() {
             override fun onItemClick(lowongan: Lowongan) {
                 // Handle item click, for example, navigate to detail activity
                 val intent = Intent(context, DetailLowPelamarActivity::class.java)
-               // intent.putExtra("productId", product.productId)
+                intent.putExtra("id_lowongan", lowongan.id_lowongan)
                 intent.putExtra("posisiLow", lowongan.posisiLow)
                 intent.putExtra("durasiLow", lowongan.durasiLow)
+                intent.putExtra("statusLow", lowongan.statusLow)
+                intent.putExtra("syaratLow", lowongan.syaratLow)
+                intent.putExtra("penjelasanLow", lowongan.penjelasanLow)
                 intent.putExtra("namaInstansi", lowongan.namaInstansi)
                 intent.putExtra("jumlahLow", lowongan.jumlahLow)
-                intent.putExtra("statusLow", lowongan.statusLow)
                 intent.putExtra("imageUrl", lowongan.imageUrl)
                 startActivity(intent)
             }

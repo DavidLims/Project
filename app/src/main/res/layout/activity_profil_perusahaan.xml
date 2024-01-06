@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilPerusahaanActivity">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@drawable/border_beranda">
+
+                <ImageView
+                    android:id="@+id/ubahFotoProfilePerusahaan"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/low2">
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/textViewNamaInstansiProfilPer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Instansi"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelola Profilmu"
+                        android:textColor="@color/orange"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="90dp">
+                    </TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewUbahDataDiri_ID"
+                android:clickable="true"
+                android:onClick="textViewUbahDataDiriPer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Ubah Data Diri"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:gravity="left|center"
+                android:drawableStart="@drawable/ic_profile"
+                android:drawableTint="@color/black"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border_beranda">
+            </TextView>
+
+            <TextView
+                android:id="@+id/textViewKeluarPer_ID"
+                android:clickable="true"
+                android:onClick="textViewKeluarPer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Keluar Dari Akun"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:gravity="left|center"
+                android:drawableStart="@drawable/ic_exit"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border_beranda">
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewPerProfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav_per"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/abu"/>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

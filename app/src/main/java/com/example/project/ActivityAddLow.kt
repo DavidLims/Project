@@ -8,13 +8,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project.databinding.ActivityAddLowBinding
 import com.example.project.table.Lowongan
+import com.example.project.SessionManagerPer
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -29,7 +30,6 @@ class ActivityAddLow : AppCompatActivity() {
     lateinit var databaseReference: DatabaseReference
     private lateinit var binding: ActivityAddLowBinding
     lateinit var ref: DatabaseReference
-    lateinit var spinnerCategory: Spinner
     lateinit var imageView: ImageView
     var selectedImageUri: Uri? = null
     var fileUri: Uri? = null
@@ -47,7 +47,7 @@ class ActivityAddLow : AppCompatActivity() {
 
         // Initialize Firebase Database
         databaseReference = FirebaseDatabase.getInstance().reference
-        ref = FirebaseDatabase.getInstance().getReference("data lowongan")
+        ref = FirebaseDatabase.getInstance().getReference("lowongann")
 
         choose_img.setOnClickListener{
             val intent = Intent()
@@ -63,12 +63,12 @@ class ActivityAddLow : AppCompatActivity() {
                 val id_lowongan = ref.push().key!!
                 uploadImage()
             } else {
-                Toast.makeText(applicationContext, "Mohon pilih foto poster", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Mohon lengkapi data", Toast.LENGTH_SHORT).show()
             }
         }
 
         // Inisialisasi referensi produk di Firebase Realtime Database
-        ref = FirebaseDatabase.getInstance().getReference("data lowongan")
+        ref = FirebaseDatabase.getInstance().getReference("lowongann")
 
         return view
 
@@ -89,8 +89,8 @@ class ActivityAddLow : AppCompatActivity() {
     private fun uploadImage() {
         if (fileUri != null) {
             val progressDialog = ProgressDialog(this)
-            progressDialog.setTitle("Uploading Image...")
-            progressDialog.setMessage("Processing")
+            progressDialog.setTitle("Menambahkan data...")
+            progressDialog.setMessage("Memproses")
             progressDialog.show()
 
             val ref: StorageReference =
@@ -119,41 +119,40 @@ class ActivityAddLow : AppCompatActivity() {
     private fun addLow() {
         val sessionManagerPer = SessionManagerPer(applicationContext)
         val id_lowongan = ref.push().key
+        val lowImage = "lowongann/$id_lowongan"
         val posisiLow = binding.uploadPosisi.text.toString()
         val durasiLow = binding.uploadDurasi.text.toString()
+//        val statusLow = binding.uploadStatusLow.text.toString()
         val syaratLow = binding.uploadSyarat.text.toString()
+        val penjelasanLow = binding.uploadPenjelasanLowongan.text.toString()
         val namaInstansi = binding.uploadNamaInstansi.text.toString()
         val jumlahLow = binding.uploadJumlahLow.text.toString()
-        val statusLow = binding.uploadStatusLow.text.toString()
-        val penjelasanLow = binding.uploadPenjelasanLowongan.text.toString()
-        //val selectedCategory = spinnerCategory.selectedItem.toString()
-        //val userId = sessionManager.getUserId() // Obtain the user ID using your SessionManager or any other method
-        val lowImage = "lowongann/$posisiLow"
 
         val lowongan = Lowongan(
             id_lowongan!!,
+            lowImage,
             posisiLow,
             durasiLow,
+            "Buka",
             syaratLow,
-            namaInstansi,
-            //"available", // Misalnya, set status menjadi "available" saat pertama kali ditambahkan
-            jumlahLow,
-            statusLow,
             penjelasanLow,
+            namaInstansi,
+            jumlahLow,
             imageUrl
         )
 
-        if (posisiLow.isNotEmpty() && durasiLow.isNotEmpty() && syaratLow.isNotEmpty() && namaInstansi.isNotEmpty() && jumlahLow.isNotEmpty() && statusLow.isNotEmpty() && penjelasanLow.isNotEmpty()) {
+        if (posisiLow.isNotEmpty() && durasiLow.isNotEmpty() && syaratLow.isNotEmpty() && penjelasanLow.isNotEmpty() && namaInstansi.isNotEmpty() && jumlahLow.isNotEmpty()) {
             ref.child(id_lowongan).setValue(lowongan).addOnCompleteListener {
                 Toast.makeText(
                     applicationContext, "Data lowongan berhasil ditambahkan", Toast.LENGTH_SHORT
                 ).show()
-                val intent = Intent(this, BerandaPelamarFragment::class.java)
+                val intent = Intent(this, ActivityAddLow::class.java)
                 startActivity(intent)
             }
         } else {
             Toast.makeText(this, "Harap isi semua data", Toast.LENGTH_SHORT).show()
         }
+
     }
 
 //    private fun replaceFragment(fragment: Fragment) {
@@ -161,6 +160,13 @@ class ActivityAddLow : AppCompatActivity() {
 //            .replace(com.google.firebase.database.R.id.frame_layout, fragment)
 //            .commit()
 //    }
+
+    //
+
+    fun btnKembaliAddLow(view: View) {
+        val i = Intent(applicationContext, MainActivityBerandaPerusahaan::class.java)
+        startActivity(i)
+    }
 
 
 }

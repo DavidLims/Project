@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:background="@color/white"
+    tools:context=".UbahDataDiriPerusahaanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnKembaliUbahDataDiriPerusahaan"
+            android:clickable="true"
+            android:text="Kembali"
+            android:textAlignment="inherit"
+            android:textColor="@color/orange"
+            android:textSize="13dp"
+            tools:ignore="MissingConstraints"> </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Ubah Data Diri"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Profil"
+                    android:textSize="15sp"
+                    android:textAlignment="inherit"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/uploadImageLogoPer"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logosccpcr"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/hijau"
+                    android:layout_gravity="center_horizontal">
+                </ImageView>
+
+                <Button
+                    android:id="@+id/pilihFotoLogoPer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih Foto"
+                    android:textSize="15sp"
+                    android:textColor="@color/orange"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="@color/white">
+                </Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Perusahaan"
+                    android:textSize="15sp"
+                    android:layout_marginTop="20dp"
+                    android:textAlignment="inherit"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/uploadPosisi"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border_beranda"
+                    android:layout_marginTop="10dp"
+                    android:padding="16dp"
+                    android:hint="Masukkan Nama Perusahaan"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="15sp">
+                </EditText>
+
+                <Button
+                    android:id="@+id/simpanButtonPer"
+                    android:onClick="simpanButtonClickPer"
+                    android:layout_width="150dp"
+                    android:layout_height="55dp"
+                    android:text="Simpan"
+                    android:textSize="18sp"
+                    android:layout_marginTop="150dp"
+                    app:cornerRadius="10dp"
+                    android:backgroundTint="@color/hijau"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:drawableLeft="@drawable/ic_simpan">
+                </Button>
+
+            </LinearLayout>
+
+
+
+
+
+        </ScrollView>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

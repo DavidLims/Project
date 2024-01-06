@@ -10,6 +10,7 @@
     android:padding="30dp"
     tools:context=".ActivityAddLow">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,11 +19,22 @@
         android:background="@color/white">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnKembaliAddLow"
+            android:clickable="true"
+            android:text="Kembali"
+            android:textAlignment="inherit"
+            android:textColor="@color/orange"
+            android:textSize="13dp"> </TextView>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Foto Poster"
             android:textSize="15sp"
             android:textAlignment="inherit"
+            android:layout_marginTop="20dp"
             android:textColor="@color/black">
         </TextView>
 
@@ -96,29 +108,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status Lowongan"
-            android:textSize="15sp"
-            android:layout_marginTop="20dp"
-            android:textAlignment="inherit"
-            android:textColor="@color/black">
-        </TextView>
-
-        <EditText
-            android:id="@+id/uploadStatusLow"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/border_beranda"
-            android:layout_marginTop="10dp"
-            android:padding="16dp"
-            android:hint="Masukkan Status Lowongan"
-            android:gravity="start|center_vertical"
-            android:textColor="@color/black"
-            android:textSize="15sp">
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Syarat dan Ketentuan Lowongan"
             android:textSize="15sp"
             android:layout_marginTop="20dp"
@@ -142,7 +131,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Syarat dan Ketentuan Lowongan"
+            android:text="Penjelasan Lowongan"
             android:textSize="15sp"
             android:layout_marginTop="20dp"
             android:textAlignment="inherit"
@@ -225,4 +214,9 @@
 
     </LinearLayout>
 
+
+
+
+
 </ScrollView>
+

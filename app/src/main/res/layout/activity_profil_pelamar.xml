@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfilPerusahaanFragment">
+    tools:context=".ProfilPelamarActivity">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,10 +15,22 @@
         android:padding="30dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Profil"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,13 +40,14 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/textViewProfil_ID"
+                    android:id="@+id/textViewCV_ID"
+                    android:clickable="true"
+                    android:onClick="textViewCV"
                     android:layout_width="320dp"
-                    android:layout_height="100dp"
-                    android:text="PT. Sumatera Dinamika Utama"
+                    android:layout_height="50dp"
+                    android:text="Curriculum Vitae"
                     android:textColor="@color/black"
                     android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="left|center"
                     android:drawableStart="@drawable/ic_cv"
                     android:drawableTint="@color/black"
@@ -44,7 +57,7 @@
                 <TextView
                     android:id="@+id/textViewUbahDataDiri_ID"
                     android:clickable="true"
-                    android:onClick="textViewUbahDataDiriPer"
+                    android:onClick="textViewUbahDataDiri"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:text="Ubah Data Diri"
@@ -53,23 +66,36 @@
                     android:gravity="left|center"
                     android:drawableStart="@drawable/ic_profile"
                     android:drawableTint="@color/black"
-                    android:drawablePadding="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/border_beranda">
                 </TextView>
 
                 <TextView
-                    android:id="@+id/textViewKeluarPer_ID"
+                    android:id="@+id/textViewStatusSeleksi_ID"
                     android:clickable="true"
-                    android:onClick="textViewKeluarPer"
+                    android:onClick="textViewStatusSeleksi"
+                    android:layout_width="320dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="50dp"
+                    android:text="Status Seleksi"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:gravity="left|center"
+                    android:drawableStart="@drawable/ic_cv"
+                    android:background="@drawable/border_beranda">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textViewKeluar_ID"
+                    android:clickable="true"
+                    android:onClick="textViewKeluar"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
-                    android:text="Keluar Dari Akun"
+                    android:text="Keluar"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     android:gravity="left|center"
                     android:drawableStart="@drawable/ic_exit"
-                    android:drawablePadding="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/border_beranda">
                 </TextView>
@@ -80,6 +106,22 @@
 
     </LinearLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewPelProfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav_pel"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/abu"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

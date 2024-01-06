@@ -4,22 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.project.databinding.ActivityBerandaPerusahaanBinding
+import com.example.project.databinding.ActivityProfilPerusahaanBinding
 
-class MainActivityBerandaPerusahaan : AppCompatActivity() {
+class ProfilPerusahaanActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBerandaPerusahaanBinding
-
-    //menampilkan layout beranda perusahaan
+    private lateinit var binding: ActivityProfilPerusahaanBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBerandaPerusahaanBinding.inflate(layoutInflater)
+        binding = ActivityProfilPerusahaanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationViewPerBeranda.setOnNavigationItemSelectedListener { menuItem ->
+        binding.bottomNavigationViewPerProfil.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.home ->
-                {
+                R.id.home -> {
 //                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     // Ganti dengan Intent untuk Activity yang Anda inginkan
                     val intent = Intent(this, MainActivityBerandaPerusahaan::class.java)
@@ -36,8 +33,7 @@ class MainActivityBerandaPerusahaan : AppCompatActivity() {
 //                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }
 
-                R.id.profile ->
-                {
+                R.id.profile -> {
 //                    replaceFragment(ProfilPelamarFragment())
                     val intent = Intent(this, ProfilPerusahaanActivity::class.java)
                     startActivity(intent)
@@ -49,19 +45,18 @@ class MainActivityBerandaPerusahaan : AppCompatActivity() {
             }
             true
         }
-
-
     }
 
-    //ketika button 'masuk sebagai perusahaan' di homepage di klik, akan ngarah ke halaman beranda perusahaan
-    fun btn_masuk_per(view: View) {
-        val i = Intent(applicationContext, MainActivityBerandaPerusahaan::class.java)
+    fun textViewKeluarPer(view: View) {
+        val i = Intent(applicationContext, MainActivityHomepage::class.java)
         startActivity(i)
     }
 
-    fun btnLihatDetailKlik(view: View){
-        val i = Intent(applicationContext, ActivityAddLow::class.java)
+    fun textViewUbahDataDiriPer(view: View) {
+        val i = Intent(applicationContext, UbahDataDiriPerusahaanActivity::class.java)
         startActivity(i)
     }
+
+
 
 }

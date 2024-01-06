@@ -13,7 +13,34 @@ class LowAdapter(
     private val onItemClickListener: OnItemClickListener
 )  : RecyclerView.Adapter<LowViewHolder>() {
 
+    private var filteredList: List<Lowongan> = mutableListOf()
+//    fun updateData(newData: List<Lowongan>) {
+//        lowList.clear()
+//        lowList.addAll(newData)
+//        notifyDataSetChanged()
+//    }
+
+//    fun filter(query: String) {
+//        filteredList = if (query.isEmpty()) {
+//            productList
+//        } else {
+//            productList.filter { it.productName?.contains(query, ignoreCase = true) == true }
+//        }.toMutableList()
+//        notifyDataSetChanged()
+//    }
+
     // Interface to handle item clicks
+
+    fun filter(query: String) {
+        filteredList = if (query.isEmpty()) {
+            lowList
+        } else {
+            lowList.filter { it.posisiLow?.contains(query, ignoreCase = true) == true }
+        }.toMutableList()
+        notifyDataSetChanged()
+    }
+
+
     interface OnItemClickListener {
         fun onItemClick(lowongan: Lowongan)
     }
@@ -26,19 +53,17 @@ class LowAdapter(
 
     override fun onBindViewHolder(holder: LowViewHolder, position: Int) {
         val lowongan = lowList[position]
-        holder.textViewNamaIntansiBeranda.text = lowongan.namaInstansi
-        holder.textViewNamaPosisiBeranda.text = lowongan.posisiLow
-        //holder.textViewStatusBeranda.text = lowongan.statusLow
-        holder.textViewDurasiBeranda.text = lowongan.durasiLow
-        holder.textViewJumlahLowBeranda.text = lowongan.jumlahLow
-
         lowongan.imageUrl?.let {
             Glide.with(holder.itemView.context)
                 .load(it)
                 .placeholder(R.drawable.low2)
                 .into(holder.imageViewLow)
         }
+        holder.textViewNamaPosisiBeranda.text = lowongan.posisiLow
+        holder.textViewDurasiBeranda.text = lowongan.durasiLow
         holder.textViewStatusBeranda.text = lowongan.statusLow
+        holder.textViewNamaIntansiBeranda.text = lowongan.namaInstansi
+        holder.textViewJumlahLowBeranda.text = lowongan.jumlahLow
 
         holder.bind(lowongan, onItemClickListener)
     }
