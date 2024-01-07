@@ -9,15 +9,16 @@ import com.example.project.table.Lowongan
 //class untuk menampilkan yang disimpan di firebase
 
 class LowAdapter(
-    private val lowList: List<Lowongan>,
+    private var lowList: MutableList<Lowongan> = mutableListOf(),
     private val onItemClickListener: OnItemClickListener
 )  : RecyclerView.Adapter<LowViewHolder>() {
 
-    private var filteredList: List<Lowongan> = mutableListOf()
+//    private var filteredList: List<Lowongan> = lowList.toMutableList()
 //    fun updateData(newData: List<Lowongan>) {
 //        lowList.clear()
 //        lowList.addAll(newData)
 //        notifyDataSetChanged()
+//
 //    }
 
 //    fun filter(query: String) {
@@ -31,14 +32,17 @@ class LowAdapter(
 
     // Interface to handle item clicks
 
-    fun filter(query: String) {
-        filteredList = if (query.isEmpty()) {
-            lowList
-        } else {
-            lowList.filter { it.posisiLow?.contains(query, ignoreCase = true) == true }
-        }.toMutableList()
-        notifyDataSetChanged()
-    }
+//    fun filter(query: String) {
+//        filteredList = if (query.isEmpty()) {
+//            lowList.toMutableList()
+//        } else {
+//            lowList.filter {
+//                it.posisiLow?.toLowerCase()?.contains(query.toLowerCase()) == true}
+//        }.toMutableList()
+//        notifyDataSetChanged()
+//
+//        Log.d("FilterDebug", "Query: $query, Filtered list: $filteredList")
+//    }
 
 
     interface OnItemClickListener {
@@ -69,6 +73,11 @@ class LowAdapter(
     }
     override fun getItemCount(): Int {
         return lowList.size
+    }
+
+    fun searchLowonganList(searchList: List<Lowongan>){
+        lowList = searchList.toMutableList()
+        notifyDataSetChanged()
     }
 }
 

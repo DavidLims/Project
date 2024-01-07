@@ -14,12 +14,14 @@ class SessionManagerPer (context: Context) {
         private const val KEY_USER_ID_PER = "userIdPer"
         private const val KEY_USER_EMAIL_PER = "emailPer"
         private const val KEY_USER_USERNAME_PER = "usernamePer"
+        private const val KEY_USER_PASSWORD_PER = "passwordPer"
     }
 
-    fun saveUserSessionPer(userIdPel: String, userEmailPel: String, usernamePel: String) {
+    fun saveUserSessionPer(userIdPel: String, userEmailPel: String, usernamePel: String, passwordPer: String ) {
         editor.putString(KEY_USER_ID_PER, userIdPel)
         editor.putString(KEY_USER_EMAIL_PER, userEmailPel)
         editor.putString(KEY_USER_USERNAME_PER, usernamePel)
+        editor.putString(KEY_USER_PASSWORD_PER, passwordPer)
 
         editor.apply()
     }
@@ -38,6 +40,10 @@ class SessionManagerPer (context: Context) {
     }
     fun getUserNamePer(): String? {
         return sharedPreferences.getString(KEY_USER_USERNAME_PER, null)
+    }
+
+    fun getUserPasswordPer(): String? {
+        return sharedPreferences.getString(KEY_USER_PASSWORD_PER, null)
     }
 
     fun clearSessionPer() {

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ProfilPerusahaanActivity">
 
     <!-- TODO: Update blank fragment layout -->
@@ -33,7 +34,7 @@
                     android:layout_height="150dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/low2">
+                    android:src="@drawable/logopertamina">
                 </ImageView>
 
                 <LinearLayout
@@ -46,19 +47,20 @@
                         android:id="@+id/textViewNamaInstansiProfilPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="Nama Instansi"
                         android:textColor="@color/black"
                         android:textSize="18dp"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold">
-                    </TextView>
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelola Profilmu"
+                        android:text="Lihat Data Perusahaan Anda"
                         android:textColor="@color/orange"
                         android:textSize="14dp"
+                        android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="90dp">
                     </TextView>
@@ -67,21 +69,20 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textViewUbahDataDiri_ID"
-                android:clickable="true"
-                android:onClick="textViewUbahDataDiriPer"
+                android:id="@+id/textViewLihatDataDiri_ID"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Ubah Data Diri"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:gravity="left|center"
-                android:drawableStart="@drawable/ic_profile"
-                android:drawableTint="@color/black"
-                android:drawablePadding="10dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border_beranda">
-            </TextView>
+                android:background="@drawable/border_beranda"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_profile"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:gravity="left|center"
+                android:onClick="textViewLihatDataDiriPer"
+                android:text="Lihat Data Perusahaan"
+                android:textColor="@color/black"
+                android:textSize="15dp"></TextView>
 
             <TextView
                 android:id="@+id/textViewKeluarPer_ID"

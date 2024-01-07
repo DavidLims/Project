@@ -19,7 +19,7 @@
             android:id="@+id/topControlsLayout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/orange"
+            android:background="@color/white"
             android:elevation="999dp"
             android:gravity="bottom"
             android:paddingLeft="10dp"
@@ -27,23 +27,25 @@
             android:paddingBottom="10dp">
 
 
-            <EditText
-                android:id="@+id/EditTextSearch"
-                android:layout_width="350dp"
-                android:layout_height="40dp"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
+                android:layout_width="370dp"
+                android:layout_height="120dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:hint="Cari lowongan pekerjaan"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/border_beranda"
+                android:focusable="false"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
-                android:textColorHint="@color/abu"
-                android:textColor="#000000"
-                android:paddingStart="12dp"
-                android:inputType="text|textCapSentences|textCapWords"
                 android:imeOptions="actionSearch"
+                android:paddingStart="12dp"
                 android:paddingEnd="10dp"
-                android:background="@drawable/putih"
-                android:drawableEnd="@drawable/ic_search"/>
+                android:textColorHint="@color/abu"
+                android:textSize="14sp"
+                app:iconifiedByDefault="false"
+                app:queryHint="Cari lowongan pekerjaan"
+                app:searchHintIcon="@null" />
 
 
             <!-- Your existing top controls views -->

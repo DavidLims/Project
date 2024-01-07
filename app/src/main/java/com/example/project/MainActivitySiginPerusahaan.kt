@@ -59,7 +59,7 @@ class MainActivitySiginPerusahaan : AppCompatActivity() {
                             // Password sesuai, login berhasil
                             val userIdPer = userSnapshot.key
                             val usernamePer = userSnapshot.child("usernamePer").value.toString()
-                            sessionManagerPer.saveUserSessionPer(userIdPer!!, emailPer, usernamePer)
+                            sessionManagerPer.saveUserSessionPer(userIdPer!!, emailPer, usernamePer, passwordPer)
                             navigateToMainPer()
                         } else {
                             showToast("Password salah")

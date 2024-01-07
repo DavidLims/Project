@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.SearchView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project.databinding.ActivityBerandaPelamarBinding
 import com.example.project.table.Lowongan
-import com.example.project.SessionManagerPel
-import com.example.project.SessionManagerPer
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -24,6 +22,7 @@ import com.google.firebase.database.ValueEventListener
 
 class MainActivityBerandaPelamar : AppCompatActivity() {
 
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var lowAdapter: LowAdapter
     private val lowList: MutableList<Lowongan> = ArrayList()
     private lateinit var searchEditText: EditText
@@ -38,6 +37,8 @@ class MainActivityBerandaPelamar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBerandaPelamarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("lowongann")
         //  setContentView(R.layout.activity_add_low)
 
         sessionManagerPel = SessionManagerPel(this)
@@ -109,15 +110,15 @@ class MainActivityBerandaPelamar : AppCompatActivity() {
             true
         }
 
-        val editTextSearch: EditText = binding.EditTextSearch
+//        val editTextSearch: EditText = binding.EditTextSearch
 
-        editTextSearch.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                performSearch(editTextSearch.text.toString())
-                return@setOnEditorActionListener true
-            }
-            false
-        }
+//        editTextSearch.setOnEditorActionListener { _, actionId, _ ->
+//            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                performSearch(editTextSearch.text.toString())
+//                return@setOnEditorActionListener true
+//            }
+//            false
+//        }
 
     }
 
@@ -129,10 +130,10 @@ class MainActivityBerandaPelamar : AppCompatActivity() {
 //        recyclerViewPel.adapter = lowAdapter
 //    }
 
-    private fun performSearch(query: String) {
-        Log.d("SearchDebug", "Performing search with query: $query")
-        lowAdapter.filter(query)
-    }
+//    private fun performSearch(query: String) {
+//        Log.d("SearchDebug", "Performing search with query: $query")
+//        lowAdapter.filter(query)
+//    }
 
 //        val sidebarMenuImageView: ImageView = binding.imageViewSidebarMenu
 //        sidebarMenuImageView.setOnClickListener {
@@ -160,12 +161,45 @@ class MainActivityBerandaPelamar : AppCompatActivity() {
 
                 // Refresh tampilan RecyclerView dengan adapter
                 lowAdapter.notifyDataSetChanged()
+
+                Log.d("FetchDataDebug", "Data fetched successfully. Count: ${lowList.size}")
+                Log.d("FetchDataDebug", "LowList: $lowList")
             }
 
             override fun onCancelled(error: DatabaseError) {
+                Log.e("FetchDataError", "Failed to fetch data from Firebase: $error")
                 // Handle error
             }
         })
+
+        binding.search.setOnClickListener(object : SearchView.OnQueryTextListener,
+            View.OnClickListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                return true
+            }
+
+            override fun onClick(v: View?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+    }
+
+    fun searchList(text: String){
+        val searchList = ArrayList<Lowongan>()
+        for (lowongann in lowList){
+            if (lowongann.posisiLow?.lowercase()?.contains(text.lowercase()) == true){
+                searchList.add(lowongann)
+            }
+        }
+        lowAdapter.searchLowonganList(searchList)
+
     }
 
 //
@@ -186,7 +220,7 @@ class MainActivityBerandaPelamar : AppCompatActivity() {
 
 
     fun displayLowongann(lowongann: List<Lowongan>) {
-        // Mengupdate data produk dalam adapter
+//         Mengupdate data produk dalam adapter
 //        lowAdapter.updateData(lowongann)
     }
 
