@@ -51,7 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Foto Profil"
+                    android:text="Logo Perusahaan"
                     android:textSize="15sp"
                     android:textAlignment="inherit"
                     android:layout_marginLeft="10dp"
@@ -60,10 +60,10 @@
                 </TextView>
 
                 <ImageView
-                    android:id="@+id/uploadImageLogoPer"
+                    android:id="@+id/LogoPerData"
                     android:layout_width="200dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/logopertamina"
+                    android:src="@drawable/logo_scc"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/hijau"
                     android:layout_gravity="center_horizontal">

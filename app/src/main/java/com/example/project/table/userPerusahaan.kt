@@ -5,7 +5,8 @@ class userPerusahaan (
     val usernamePer: String,
     val emailPer: String,
     val passwordPer: String,
+    val imageUrlPer: String?,
 
     ) {
-        constructor() : this("", "", "", "")
+        constructor() : this("", "", "", "", "")
 }

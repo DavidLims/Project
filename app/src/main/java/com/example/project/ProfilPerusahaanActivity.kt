@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.project.databinding.ActivityProfilPerusahaanBinding
 class ProfilPerusahaanActivity : AppCompatActivity() {
 
@@ -19,13 +20,18 @@ class ProfilPerusahaanActivity : AppCompatActivity() {
 
         val sessionManagerPer = SessionManagerPer(applicationContext)
 
-        val userIdPer = sessionManagerPer.getUserIdPer()
         val usernamePer = sessionManagerPer.getUserNamePer()
-        val emailPer = sessionManagerPer.getUserEmailPer()
+        val image = sessionManagerPer.getUserImageUrlPer()
 
         binding.textViewNamaInstansiProfilPer.text = usernamePer
 
-
+        image?.let {
+            Glide.with(this)
+                .load(it)
+                .placeholder(R.drawable.ic_upload) // placeholder image while loading
+                .error(R.drawable.ic_upload) // error image if loading fails
+                .into(binding.LogoPerProfil)
+        }
 
         binding.bottomNavigationViewPerProfil.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {

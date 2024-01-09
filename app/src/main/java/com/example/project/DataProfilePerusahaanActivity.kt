@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.project.databinding.ActivityDataProfilePerusahaanBinding
 
 class DataProfilePerusahaanActivity : AppCompatActivity() {
@@ -22,10 +23,19 @@ class DataProfilePerusahaanActivity : AppCompatActivity() {
         val usernamePer = sessionManagerPer.getUserNamePer()
         val emailPer = sessionManagerPer.getUserEmailPer()
         val passwordPer = sessionManagerPer.getUserPasswordPer()
+        val image = sessionManagerPer.getUserImageUrlPer()
 
         binding.textViewNamaPerusahaanData.text = usernamePer
         binding.textViewEmailPerusahaanData.text = emailPer
         binding.textViewPassEmailPerusahaanData.text = passwordPer
+
+        image?.let {
+            Glide.with(this)
+                .load(it)
+                .placeholder(R.drawable.ic_upload) // placeholder image while loading
+                .error(R.drawable.ic_upload) // error image if loading fails
+                .into(binding.LogoPerData)
+        }
 
 
     }

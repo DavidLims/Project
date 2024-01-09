@@ -1,18 +1,16 @@
 package com.example.project
 
 import android.content.Intent
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project.databinding.ActivitySiginPerusahaanBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.example.project.SessionManagerPer
-
 
 class MainActivitySiginPerusahaan : AppCompatActivity() {
 
@@ -42,6 +40,7 @@ class MainActivitySiginPerusahaan : AppCompatActivity() {
                 Toast.makeText(this, "Field tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
+
         binding.TextViewToRegisPer.setOnClickListener {
             navigateToRegisterPer()
         }
@@ -59,7 +58,8 @@ class MainActivitySiginPerusahaan : AppCompatActivity() {
                             // Password sesuai, login berhasil
                             val userIdPer = userSnapshot.key
                             val usernamePer = userSnapshot.child("usernamePer").value.toString()
-                            sessionManagerPer.saveUserSessionPer(userIdPer!!, emailPer, usernamePer, passwordPer)
+                            val imageUrlPer = userSnapshot.child("imageUrlPer").value.toString()
+                            sessionManagerPer.saveUserSessionPer(userIdPer!!, emailPer, usernamePer, passwordPer, imageUrlPer )
                             navigateToMainPer()
                         } else {
                             showToast("Password salah")
